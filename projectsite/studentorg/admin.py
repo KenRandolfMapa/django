@@ -16,3 +16,4 @@ class StudentAdmin(admin.ModelAdmin):
 @admin.register(OrgMember)
 class OrgMemberAdmin(admin.ModelAdmin):
     list_display = ("student", "organization", "created_at")
+

@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load static %} {%  block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 <div class="content">
     <div class="container-fluid">
         <h4 class="page-title">HOME</h4>
@@ -7,10 +9,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">List of Organizations</div>
-                        <div class="card-category">page Subtitle</div>
+                        <div class="card-category">Page Subtitle</div>
                     </div>
                     <br>
-                    <div class="col-md-12 row">
+                    <div class="row">
                         <div class="col-md-6">
                             <form action="" class="navbar-left navbar-form nav-search mr-md-3">
                                 <div class="input-group">
@@ -33,19 +35,22 @@
                         <table class="table table-striped mt-3">
                             <thead>
                                 <tr>
-                                    <th class="col">Name</th>
-                                    <th class="col">College</th>
-                                    <th class="col">Description</th>
-                                    <th class="col">Action</th>
+                                    <th>Name</th>
+                                    <th>College</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for object in object_list %}
                                 <tr>
-                                    <td>{{ object.name }}</td>
-                                    <td>{{ object.college }}</td>
-                                    <td>{{ object.description }}</td>
-                                    <td><a href="organization_list/{{object.id}}" class="btn btn-default btn-rounded">Edit</a></td>
+                                    <td style="width: 25%">{{ object.name }}</td>
+                                    <td style="width: 25%">{{ object.college }}</td>
+                                    <td style="width: 30%">{{ object.description }}</td>
+                                    <td style="width: 20%">
+                                        <a href="organization_list/{{object.id}}">Edit</a>
+                                        <a href="organization_list/{{object.id}}/delete" class="text-danger">Delete</a>
+                                    </td>
                                 </tr>
                                 {% empty %}
                                 <tr>
@@ -61,4 +66,4 @@
         </div>
     </div>
 </div>
-{%  endblock %}
+{% endblock %}

@@ -36,6 +36,7 @@
                                     <th class="col">Name</th>
                                     <th class="col">College</th>
                                     <th class="col">Description</th>
+                                    <th class="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,6 +45,11 @@
                                     <td>{{ object.name }}</td>
                                     <td>{{ object.college }}</td>
                                     <td>{{ object.description }}</td>
+                                    <td><a href="organization_list/{{object.id}}" class="btn btn-default btn-rounded">Edit</a></td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" style="text-align: center;">No Record Found!</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

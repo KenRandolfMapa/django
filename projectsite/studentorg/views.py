@@ -6,3 +6,6 @@ class HomePageView(ListView):
     model = Organization
     context_object_name = 'home'
     template_name = "home.html"
+
+def forms_view(request):
+    return render(request, 'forms.html', {})

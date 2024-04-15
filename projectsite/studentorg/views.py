@@ -7,5 +7,11 @@ class HomePageView(ListView):
     context_object_name = 'home'
     template_name = "home.html"
 
+class organizationList(ListView):
+    model=Organization
+    context_object_name = 'organizations'
+    template_name = 'org_list.html'
+    paginate_by  = 5
+
 def forms_view(request):
     return render(request, 'forms.html', {})

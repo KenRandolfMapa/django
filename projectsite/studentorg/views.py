@@ -33,7 +33,7 @@ class organizationList(ListView):
     model=Organization
     context_object_name = 'organizations'
     template_name = 'org_list.html'
-    paginate_by  = 5
+    paginate_by  =  10
 
 def forms_view(request):
     return render(request, 'forms.html', {})

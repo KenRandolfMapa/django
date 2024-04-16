@@ -10,8 +10,13 @@
                         <div class="card-category">Page Subtitle</div>
                     </div>
                     <div class="col-md-6">
+                        <div class="pull-right">
+                            <a href="{% url 'organization-list' %}" class="btn btn-warning btn-rounded">back</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="card-body">
-                            <form class="" action="" method="post novatidate">
+                            <form class="" action="" method="post" novatidate>
                                 {% csrf_token %} {% include 'includes/form.html' %}
                                 <div class="form-group">
                                     <div class="col-md-12 col-ms-3">

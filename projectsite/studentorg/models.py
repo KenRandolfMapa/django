@@ -30,7 +30,7 @@ class Organization(BaseModel):
     
 
 class Student(BaseModel):
-    student_id = models.CharField(max_length=15)  # Corrected from max_lenght to max_length
+    student_id = models.CharField(max_length=15)
     lastname = models.CharField(max_length=25)
     firstname = models.CharField(max_length=25)
     middlename = models.CharField(max_length=25, blank=True, null=True)

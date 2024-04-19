@@ -22,11 +22,22 @@ class CollegeList(ListView):
     paginate_by = 10
 
 #student
+class StudentDeleteView(DeleteView):
+    model = Student
+    template_name = 'student_del.html'
+    success_url = reverse_lazy('student-list')
+
 class StudentUpdateView(UpdateView):
     model = Student
     form_class = StudentForm  # Use the form you've defined
     template_name = 'student_edit.html'
     success_url = 'student_list'
+    success_url = reverse_lazy('student-list')
+
+class StudentCreateView(CreateView):
+    model = Student
+    form_class = StudentForm
+    template_name = 'student_add.html'
     success_url = reverse_lazy('student-list')
 
 class StudentList(ListView):
@@ -37,6 +48,7 @@ class StudentList(ListView):
 
 def forms_view(request):
     return render(request, 'forms.html', {})
+
 #org member
 class OrgMemberList(ListView):
     model = OrgMember
@@ -60,7 +72,7 @@ class OrganizationCreateView(CreateView):
     form_class = OrganizationForm
     template_name = 'org_add.html'
     success_url = reverse_lazy('organization-list')
-    
+
 @method_decorator([login_required], name='dispatch')
 class HomePageView(ListView):
     model = Organization

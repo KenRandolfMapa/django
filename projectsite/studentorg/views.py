@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 
 from django.views.generic.edit  import CreateView, UpdateView, DeleteView
 from studentorg.models import Organization,OrgMember, Student, College
-from studentorg.forms import OrganizationForm
+from studentorg.forms import OrganizationForm, StudentForm
 from django.urls import reverse_lazy
 from django.utils.decorators import  method_decorator
 from django.contrib.auth.decorators import login_required
@@ -22,10 +22,12 @@ class CollegeList(ListView):
     paginate_by = 10
 
 #student
-class StudentCreateView(CreateView):
+class StudentUpdateView(UpdateView):
     model = Student
-    template_name = 'student_add.html'
-    success_url = reverse_lazy('student-add')
+    form_class = StudentForm  # Use the form you've defined
+    template_name = 'student_edit.html'
+    success_url = 'student_list'
+    success_url = reverse_lazy('student-list')
 
 class StudentList(ListView):
     model = Student

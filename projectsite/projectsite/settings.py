@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-hl@q&&px#drz3ul*k%!&kcr)uh+mw$0gxwkux&l4h^v6#k2vzk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['psusphere.pythonanywhere.com','127.0.0.1']
+ALLOWED_HOSTS = ['krm.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -127,6 +127,6 @@ STATICFILES_DIRS = (BASE_DIR / "static", )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_REDIRECT_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'Home'
 LOGIN_URL = 'login'
 

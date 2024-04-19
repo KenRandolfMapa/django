@@ -31,8 +31,8 @@ class Organization(BaseModel):
 
 class Student(BaseModel):
     student_id = models.CharField(max_length=15)
-    lastname = models.CharField(max_length=25)
-    firstname = models.CharField(max_length=25)
+    lastname = models.CharField(max_length=50)
+    firstname = models.CharField(max_length=50)
     middlename = models.CharField(max_length=25, blank=True, null=True)
     Program = models.ForeignKey(Program, on_delete=models.CASCADE)
 

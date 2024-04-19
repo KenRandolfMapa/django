@@ -25,7 +25,7 @@
 			<nav class="navbar navbar-header navbar-expand-lg">
 				<div class="container-fluid">
 					
-					<form class="navbar-left navbar-form nav-search mr-md-3" action="="{% url 'organization-list' %}">
+					<form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'organization-list' %}">
 						<div class="input-group">
 							<input type="text" placeholder="Search ..." class="form-control" name="q">
 							<div class="input-group-append">
@@ -121,7 +121,7 @@
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Setting</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-power-off"></i> Logout</a>
+									<a class="dropdown-item" href="{% url 'login' %}"><i class="fa fa-power-off"></i> Logout</a>
 								</ul>
 								<!-- /.dropdown-user -->
 							</li>
@@ -180,19 +180,19 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="forms.html">
+							<a href="{% url 'orgmember-list'%}">
 								<i class="la la-keyboard-o"></i>
 								<p>Org. Members</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="tables.html">
+							<a href="{% url 'student-list' %}">
 								<i class="la la-th"></i>
 								<p>Student</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="notifications.html">
+							<a href="{% url 'college-list' %}" >
 								<i class="la la-bell"></i>
 								<p>College</p>
 							</a>

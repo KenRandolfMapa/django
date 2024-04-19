@@ -1,20 +1,20 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <div class="content">
   <div class="container-fluid">
-    <h4 class="page-title">Student</h4>
+    <h4 class="page-title">Program</h4>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <div class="card-title">List of Students</div>
+            <div class="card-title">List of Program</div>
             <div class="card-category">Palawan State University</div>
           </div>
           <br />
           <div class="col-md-12 row">
             <div class="col-md-6">
-              <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'student-list' %}">
+              <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'program-list' %}">
                 <div class="input-group">
-                  <input type="text" placeholder="Search ..." class="form-control" name="q"/>
+                  <input type="text"placeholder="Search ..." class="form-control" name="q"/>
                   <div class="input-group-append">
                     <span class="input-group-text">
                       <i class="la la-search search-icon"></i>
@@ -26,9 +26,9 @@
             <div class="col-md-6">
               <div class="pull-right">
                 <a
-                  href=""
+                  href="{% url 'program-add' $}"
                   class="btn btn-success btn-rounded"
-                  >Add Student</a
+                  >Add Program</a
                 >
               </div>
             </div>
@@ -37,26 +37,19 @@
             <table class="table table-striped mt-3">
               <thead>
                 <tr>
-                  <th scope="col">Student</th>
                   <th scope="col">Program</th>
-                  <th scope="col">Organization</th>
+                  <th scope="col">College</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {% for object in object_list %}
                 <tr>
-                  <td>{{ object.student }}</td>
-                  <td>{{ object.program }}</td>
-                  <td>{{ object.organization }}</td>
-                  <td></td>
+                  <td>{{ object.prog_name}}</td>
+                  <td>{{ object.college }}</td>
                   <td>
-                    <a href="student_list/{{object.id}}">Edit</a>
-                    <a
-                      href="student_list/{{object.id}}/delete"
-                      class="text-danger"
-                      >Delete</a
-                    >
+                    <a href="program_list/{{object.id}}">Edit</a>
+                    <a href="program_list/{{object.id}}/delete" class="text-danger">Delete</a>
                   </td>
                 </tr>
                 {% empty %}

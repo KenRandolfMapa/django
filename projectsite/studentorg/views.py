@@ -3,7 +3,7 @@ from django.views.generic.list import ListView
 
 
 from django.views.generic.edit  import CreateView, UpdateView, DeleteView
-from studentorg.models import Organization, OrgMember
+from studentorg.models import Organization,OrgMember, Student, College
 from studentorg.forms import OrganizationForm
 from django.urls import reverse_lazy
 from django.utils.decorators import  method_decorator
@@ -13,6 +13,33 @@ from django.contrib.auth.decorators import login_required
 from typing import Any
 from django.db.models.query import QuerySet
 from django.db.models import Q
+
+#College
+class CollegeList(ListView):
+    model = College
+    template_name = 'college_list.html'
+    success_url = reverse_lazy('college-list')
+    paginate_by = 10
+
+#student
+class StudentCreateView(CreateView):
+    model = Student
+    template_name = 'student_add.html'
+    success_url = reverse_lazy('student-add')
+
+class StudentList(ListView):
+    model = Student
+    template_name = 'student_list.html'
+    success_url = reverse_lazy('student-list')
+    paginate_by = 10
+
+def forms_view(request):
+    return render(request, 'forms.html', {})
+#org member
+class OrgMemberList(ListView):
+    model = OrgMember
+    success_url = 'orgmember_list.html'
+    paginate_by = 10
 
 # Organization
 class OrganizationDeleteView(DeleteView):

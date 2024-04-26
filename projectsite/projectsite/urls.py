@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from studentorg.views import HomePageView, organizationList,OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView
+from studentorg.views import HomePageView, ChartView
+from studentorg.views import organizationList,OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView
 from studentorg.views import StudentList,StudentUpdateView, StudentCreateView ,StudentDeleteView
 from studentorg.views import ProgramList, ProgramCreateView,ProgramUpdateView, ProgramDeleteView
 from studentorg.views import CollegeList,CollegeCreateView, CollegeUpdateView, CollegeDelView
@@ -57,5 +58,8 @@ urlpatterns = [
     
     #Org member
     path('orgmember_list', OrgMemberList.as_view(), name= 'orgmember-list'),
+
+    #chartview
+    path('dashboard_chart', ChartView.as_view(), name = 'dashboard-chart'),
 
 ]

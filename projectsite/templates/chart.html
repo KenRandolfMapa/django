@@ -1,4 +1,63 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<script>
+  function loadChartData() {
+    // pieChart
+    fetch("/chart/")
+      .then((response) => response.json())
+      .then((data) => {
+        var severityLevels = Object.keys(data);
+        var counts = Object.values(data);
+        var pieChart = document.getElementById("pieChart").getContext("2d");
+
+        console.log("call");
+
+        new Chart(pieChart, {
+          type: "pie",
+          data: {
+            datasets: [
+              {
+                data: counts,
+                backgroundColor: ["#1d7af3", "#f3545d", "#fdaf4b"],
+                borderWidth: 0,
+              },
+            ],
+            labels: severityLevels,
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+              position: "bottom",
+              labels: {
+                fontColor: "rgb(154, 154, 154)",
+                fontSize: 11,
+                usePointStyle: true,
+                padding: 20,
+              },
+            },
+            pieceLabel: {
+              render: "percentage",
+              fontColor: "white",
+              fontSize: 14,
+            },
+            tooltips: false,
+            layout: {
+              padding: {
+                left: 20,
+                right: 20,
+                top: 20,
+                bottom: 20,
+              },
+            },
+          },
+        });
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
+  loadChartData();
+</script>
+
 <div class="page-inner">
   <h4 class="page-title">Chart.js</h4>
   <div class="page-category">Simple yet flexible JavaScript charting for designers & developers. Please checkout their <a href="https://www.chartjs.org/" target="_blank">full documentation</a>.</div>

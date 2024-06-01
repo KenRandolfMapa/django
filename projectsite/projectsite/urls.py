@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from studentorg.views import HomePageView, ChartView, PieCountbySeverity, LineCountbyMonth
+from studentorg.views import HomePageView, ChartView, PieCountbySeverity, LineCountbyMonth, MultilineIncidentTop3Country
 from studentorg.views import organizationList,OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView
 from studentorg.views import StudentList,StudentUpdateView, StudentCreateView ,StudentDeleteView
 from studentorg.views import ProgramList, ProgramCreateView,ProgramUpdateView, ProgramDeleteView
@@ -62,5 +62,5 @@ urlpatterns = [
     #chartview
     path('dashboard_chart', ChartView.as_view(), name = 'dashboard-chart'),
     path('chart/', PieCountbySeverity, name = 'chart'),
-
+    path('multilineChrt/', MultilineIncidentTop3Country, name = 'chart'),
 ]

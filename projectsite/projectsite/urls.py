@@ -21,7 +21,7 @@ from studentorg.views import organizationList,OrganizationCreateView, Organizati
 from studentorg.views import StudentList,StudentUpdateView, StudentCreateView ,StudentDeleteView
 from studentorg.views import ProgramList, ProgramCreateView,ProgramUpdateView, ProgramDeleteView
 from studentorg.views import CollegeList,CollegeCreateView, CollegeUpdateView, CollegeDelView
-from studentorg.views import OrgMemberList
+from studentorg.views import OrgMemberList, OrgMemberCreate, OrgMemberUpdate,OrgMemberDeleteView
 from studentorg import views
 from django.contrib.auth import views as auth_views
 
@@ -58,6 +58,9 @@ urlpatterns = [
     
     #Org member
     path('orgmember_list', OrgMemberList.as_view(), name= 'orgmember-list'),
+    path('orgmembers/add/', OrgMemberCreate.as_view(), name='orgmember_add'),
+    path('orgmembers/edit/<int:pk>/', OrgMemberUpdate.as_view(), name='orgmember_edit'),
+    path('orgmembers/delete/<int:pk>/', OrgMemberDeleteView.as_view(), name='orgmember_delete'),
 
     #chartview
     path('dashboard_chart', ChartView.as_view(), name = 'dashboard-chart'),

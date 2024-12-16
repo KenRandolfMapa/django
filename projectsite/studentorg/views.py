@@ -11,7 +11,7 @@ from datetime import datetime
 
 from django.views.generic.edit  import CreateView, UpdateView, DeleteView
 from studentorg.models import Organization,OrgMember, Student,Program, College
-from studentorg.forms import OrganizationForm, StudentForm, ProgramForm, CollegeForm
+from studentorg.forms import OrganizationForm, StudentForm, ProgramForm, CollegeForm, OrgMemberForm
 from django.urls import reverse_lazy
 from django.utils.decorators import  method_decorator
 from django.contrib.auth.decorators import login_required
@@ -103,8 +103,32 @@ def forms_view(request):
 #org member
 class OrgMemberList(ListView):
     model = OrgMember
-    success_url = 'orgmember_list.html'
+    template_name = 'orgmember_list.html'
+    context_object_name = 'orgmembers'
     paginate_by = 10
+
+
+# Create a new OrgMember
+class OrgMemberCreate(CreateView):
+    model = OrgMember
+    form_class = OrgMemberForm
+    template_name = 'orgmember_form.html'
+    success_url = reverse_lazy('orgmember_list')
+
+
+# Update an existing OrgMember
+class OrgMemberUpdate(UpdateView):
+    model = OrgMember
+    form_class = OrgMemberForm
+    template_name = 'orgmember_form.html'
+    success_url = reverse_lazy('orgmember_list')
+
+
+# Delete an OrgMember
+class OrgMemberDeleteView(DeleteView):
+    model = OrgMember
+    template_name = 'orgmember_confirm_delete.html'
+    success_url = reverse_lazy('orgmember_list')
 
 # Organization
 class OrganizationDeleteView(DeleteView):

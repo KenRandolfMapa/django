@@ -16,22 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from studentorg.views import HomePageView, ChartView, StudentCountByProgram,OrganizationGraphData, chart_colleges
+from studentorg.views import HomePageView, ChartView, PieCountbySeverity, LineCountbyMonth, MultilineIncidentTop3Country
 from studentorg.views import organizationList,OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView
 from studentorg.views import StudentList,StudentUpdateView, StudentCreateView ,StudentDeleteView
 from studentorg.views import ProgramList, ProgramCreateView,ProgramUpdateView, ProgramDeleteView
 from studentorg.views import CollegeList,CollegeCreateView, CollegeUpdateView, CollegeDelView
 from studentorg.views import OrgMemberList, OrgMemberCreate, OrgMemberUpdate,OrgMemberDeleteView
-
-
-
 from studentorg import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-
     path('', views.HomePageView.as_view(), name='Home'),
     path('forms.html', views.forms_view, name='forms'),
     path('organization_list', organizationList.as_view(), name='organization-list'),
@@ -68,10 +63,7 @@ urlpatterns = [
     path('orgmembers/delete/<int:pk>/', OrgMemberDeleteView.as_view(), name='orgmember_delete'),
 
     #chartview
-    path('dashboard_chart', ChartView.as_view(), name='dashboard-chart'),
-    path('student-count-by-program/', StudentCountByProgram, name='student-count-by-program'),
-    path('organization-graph-data/', OrganizationGraphData, name='organization-graph-data'),
-    path('pie-chart/students/', views.chart_students, name='pie_chart_students'),
-    path('pie-chart/org-members/', views.chart_org_members, name='pie_chart_org_members'),
-    path('pie-chart/colleges/', chart_colleges, name='pie_chart_colleges'),
+    path('dashboard_chart', ChartView.as_view(), name = 'dashboard-chart'),
+    path('chart/', PieCountbySeverity, name = 'chart'),
+    path('multilineChrt/', MultilineIncidentTop3Country, name = 'chart'),
 ]
